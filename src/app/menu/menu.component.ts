@@ -19,7 +19,7 @@ export class MenuComponent implements OnInit {
   constructor(private dishService: DishService) { }
 
   ngOnInit() {
-    this.dishes = this.dishService.getDihses();
+    this.dishes = this.dishService.getDishes();
   }
 
   OnSelect(dish: Dish) {
