@@ -1,17 +1,12 @@
-<div class="container"
-    fxLayout="row"
-    fxLayout.sm="column"
-    fxLayout.xs="column"
-    fxLayoutAlign.gt-md="space-around center"
-    fxLayoutGap="10px" 
-    fxLayoutGap.xs="0">
+<div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
+  fxLayoutAlign.gt-md="space-around center" fxLayoutGap="10px" fxLayoutGap.xs="0">
 
-    <div fxFlex="100">
-      <div>
-        <h3>{{dish.name | uppercase}}</h3>
-        <hr>
-      </div>
+  <div fxFlex="100">
+    <div>
+      <h3>{{dish.name | uppercase}}</h3>
+      <hr>
     </div>
+  </div>
 
   <div fxFlex="50" *ngIf="dish">
     <mat-card>
@@ -22,7 +17,7 @@
       </mat-card-header>
       <img mat-card-image src={{dish.image}} alt={{dish.name}}>
       <mat-card-content>
-          <p>{{dish.description}}</p>
+        <p>{{dish.description}}</p>
       </mat-card-content>
       <mat-card-actions>
         <button mat-button (click)="goBack()">BACK</button>
@@ -31,24 +26,28 @@
 
       </mat-card-actions>
     </mat-card>
-    
+
   </div>
 
-  <div fxFlex="40" *ngIf="dish"> 
-      <mat-grid-tile-header>
-          <h1>Comments</h1>
-        </mat-grid-tile-header>
-      
-      <mat-grid-list cols="1" rowHeight="100" *ngFor="let dish of dish.comments">
-         <div matline>
-            
-            <p >{{dish.comment}} 
-            <p > {{dish.rating}} Stars </p>
-            <p > --{{dish.author}} {{dish.date | date}} </p>
-          </div> 
-         
-        
-      </mat-grid-list>
+  <div fxFlex="40" *ngIf="dish">
+    <mat-grid-tile-header>
+      <h1>Comments</h1>
+    </mat-grid-tile-header>
+
+    <mat-grid-list cols="1" rowHeight="100" *ngFor="let dish of dish.comments">
+      <div matline>
+
+        <p>{{dish.comment}}
+          <p> {{dish.rating}} Stars </p>
+          <p> --{{dish.author}} {{dish.date | date}} </p>
       </div>
-  
+
+
+    </mat-grid-list>
+  </div>
+  <div fxFlex [hidden]="dish">
+    <mat-spinner></mat-spinner>
+    <h4>Loading . . . Please Wait</h4>
+  </div>
+
 </div>
